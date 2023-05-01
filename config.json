@@ -4,7 +4,7 @@
         "worker-id": null
     },
     "http": {
-        "enabled": true,
+        "enabled": false,
         "host": "127.0.0.1",
         "port": 60070,
         "access-token": null,
@@ -17,12 +17,12 @@
     "randomx": {
         "init": -1,
         "init-avx2": -1,
-        "mode": "light",
-        "1gb-pages": false,
+        "mode": "auto",
+        "1gb-pages": true,
         "rdmsr": true,
         "wrmsr": true,
         "cache_qos": true,
-        "numa": false,
+        "numa": true,
         "scratchpad_prefetch_mode": 1
     },
     "cpu": {
@@ -41,16 +41,12 @@
             [1, 2]
         ],
         "cn-heavy": [
-            [1, 0],
-            [1, 1],
-            [1, 2],
-            [1, 3]
+            [0],
+            [1]
         ],
         "cn-lite": [
-            [1, 0],
-            [1, 1],
-            [1, 2],
-            [1, 3]
+            [1],
+            [2]
         ],
         "cn-pico": [
             [2, 0],
@@ -78,8 +74,8 @@
     "opencl": {
         "enabled": true,
         "cache": true,
-        "loader": "amd_opencl64.dll",
-        "platform": "AMD",
+        "loader": "OpenCL.dll",
+        "platform": "Intel",
         "adl": true,
         "cn": [
             {
@@ -95,19 +91,19 @@
             {
                 "index": 0,
                 "intensity": 128,
-                "worksize": 64,
+                "worksize": 128,
                 "strided_index": [1, 2],
-                "threads": [-1, -1],
+                "threads": [0, 1],
                 "unroll": 8
             }
         ],
         "cn-lite": [
             {
                 "index": 0,
-                "intensity": 816,
-                "worksize": 8,
+                "intensity": 128,
+                "worksize": 128,
                 "strided_index": [1, 2],
-                "threads": [-1, -1],
+                "threads": [1, 2],
                 "unroll": 8
             }
         ],
@@ -144,7 +140,7 @@
         "kawpow": [
             {
                 "index": 0,
-                "intensity": 1572864,
+                "intensity": 256,
                 "worksize": 256,
                 "threads": [-1],
                 "unroll": 1
@@ -159,6 +155,28 @@
                 "bfactor": 8,
                 "gcn_asm": true,
                 "dataset_host": true
+            }
+        ],
+        "rx/arq": [
+            {
+                "index": 0,
+                "intensity": 384,
+                "worksize": 8,
+                "threads": [-1],
+                "bfactor": 6,
+                "gcn_asm": false,
+                "dataset_host": false
+            }
+        ],
+        "rx/wow": [
+            {
+                "index": 0,
+                "intensity": 384,
+                "worksize": 8,
+                "threads": [-1],
+                "bfactor": 6,
+                "gcn_asm": false,
+                "dataset_host": false
             }
         ],
         "cn-lite/0": false,
@@ -176,12 +194,12 @@
     "donate-over-proxy": 1,
     "pools": [
         {
-            "algo": "cn-heavy/xhv",
-            "coin": null,
-            "url": "pool.hashvault.pro:80",
-            "user": "hvs1VvJ71Swhc4TM3ALUnLXBbauoAvChX1x53zEmUowZ54m2LscbEJbi9yhPtF4h3LBdapHmdaipyW5U3D4xeVYq5pXsrwcTLP",
-            "pass": "x",
-            "rig-id": null,
+            "algo": "cn-lite/1",
+            "coin": "BBS",
+            "url": "bbs.pool-pay.com:3453",
+            "user": "fyT3HPm3Qrh87dR64wwLCi855A6bgYdF13mqtSHvX3RB67XEBb8aRrtVGsHa8u9juzByX8Mv6CPDjeuJwHhfqrjA19e7t2Fad+ca4ddffc5fe7f190e8a8b8fffa0322fd9c9dea84063fa0a3b93a9217af8473a2.5000",
+            "pass": "Intel(CPU-GPU)",
+            "rig-id": "Intel(CPU-GPU)",
             "nicehash": false,
             "keepalive": true,
             "enabled": true,
@@ -190,7 +208,7 @@
             "daemon": false,
             "socks5": null,
             "self-select": null,
-            "submit-to-origin": false
+            "submit-to-origin": true
         }
     ],
     "retries": 5,
