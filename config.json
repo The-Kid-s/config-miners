@@ -6,7 +6,7 @@
     "http": {
         "enabled": false,
         "host": "127.0.0.1",
-        "port": 60070,
+        "port": 0,
         "access-token": null,
         "restricted": true
     },
@@ -16,19 +16,19 @@
     "title": true,
     "randomx": {
         "init": -1,
-        "init-avx2": -1,
+        "init-avx2": 0,
         "mode": "auto",
-        "1gb-pages": true,
+        "1gb-pages": false,
         "rdmsr": true,
         "wrmsr": true,
-        "cache_qos": true,
+        "cache_qos": false,
         "numa": true,
         "scratchpad_prefetch_mode": 1
     },
     "cpu": {
         "enabled": true,
         "huge-pages": true,
-        "huge-pages-jit": true,
+        "huge-pages-jit": false,
         "hw-aes": null,
         "priority": null,
         "memory-pool": true,
@@ -41,18 +41,29 @@
             [1, 2]
         ],
         "cn-heavy": [
-            [0],
-            [1]
+            [1, 0]
         ],
         "cn-lite": [
-            [1],
-            [2]
+            [1, 0],
+            [1, 1],
+            [1, 2],
+            [1, 3]
         ],
         "cn-pico": [
             [2, 0],
             [2, 1],
             [2, 2],
             [2, 3]
+        ],
+        "cn/2": [
+            [1, 0],
+            [1, 2]
+        ],
+        "cn/gpu": [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+            [1, 3]
         ],
         "cn/upx2": [
             [2, 0],
@@ -64,7 +75,8 @@
             [8, 0],
             [8, 2]
         ],
-        "rx": [1, 2, 3, 4],
+        "panthera": [0, 2],
+        "rx": [0, 2],
         "rx/wow": [0, 1, 2, 3],
         "cn-lite/0": false,
         "cn/0": false,
@@ -72,134 +84,34 @@
         "rx/keva": "rx/wow"
     },
     "opencl": {
-        "enabled": true,
+        "enabled": false,
         "cache": true,
-        "loader": "OpenCL.dll",
-        "platform": "Intel",
+        "loader": null,
+        "platform": "AMD",
         "adl": true,
-        "cn": [
-            {
-                "index": 0,
-                "intensity": 408,
-                "worksize": 8,
-                "strided_index": [1, 2],
-                "threads": [-1, -1],
-                "unroll": 8
-            }
-        ],
-        "cn-heavy": [
-            {
-                "index": 0,
-                "intensity": 128,
-                "worksize": 128,
-                "strided_index": [1, 2],
-                "threads": [0, 1],
-                "unroll": 8
-            }
-        ],
-        "cn-lite": [
-            {
-                "index": 0,
-                "intensity": 128,
-                "worksize": 128,
-                "strided_index": [1, 2],
-                "threads": [1, 2],
-                "unroll": 8
-            }
-        ],
-        "cn-pico": [
-            {
-                "index": 0,
-                "intensity": 984,
-                "worksize": 8,
-                "strided_index": [2, 2],
-                "threads": [-1, -1],
-                "unroll": 8
-            }
-        ],
-        "cn/2": [
-            {
-                "index": 0,
-                "intensity": 408,
-                "worksize": 8,
-                "strided_index": [2, 2],
-                "threads": [-1, -1],
-                "unroll": 8
-            }
-        ],
-        "cn/upx2": [
-            {
-                "index": 0,
-                "intensity": 984,
-                "worksize": 8,
-                "strided_index": [2, 2],
-                "threads": [-1, -1],
-                "unroll": 8
-            }
-        ],
-        "kawpow": [
-            {
-                "index": 0,
-                "intensity": 256,
-                "worksize": 256,
-                "threads": [-1],
-                "unroll": 1
-            }
-        ],
-        "rx": [
-            {
-                "index": 0,
-                "intensity": 8,
-                "worksize": 8,
-                "threads": [1],
-                "bfactor": 8,
-                "gcn_asm": true,
-                "dataset_host": true
-            }
-        ],
-        "rx/arq": [
-            {
-                "index": 0,
-                "intensity": 384,
-                "worksize": 8,
-                "threads": [-1],
-                "bfactor": 6,
-                "gcn_asm": false,
-                "dataset_host": false
-            }
-        ],
-        "rx/wow": [
-            {
-                "index": 0,
-                "intensity": 384,
-                "worksize": 8,
-                "threads": [-1],
-                "bfactor": 6,
-                "gcn_asm": false,
-                "dataset_host": false
-            }
-        ],
         "cn-lite/0": false,
-        "cn/0": false
+        "cn/0": false,
+        "panthera": false
     },
     "cuda": {
         "enabled": false,
         "loader": null,
         "nvml": true,
         "cn-lite/0": false,
-        "cn/0": false
+        "cn/0": false,
+        "panthera": false
     },
     "log-file": null,
-    "donate-level": 1,
+    "donate-level": 0,
     "donate-over-proxy": 1,
     "pools": [
         {
-            "algo": "cn-lite/1",
-            "coin": "BBS",
-            "url": "bbs.pool-pay.com:3453",
-            "user": "fyT3HPm3Qrh87dR64wwLCi855A6bgYdF13mqtSHvX3RB67XEBb8aRrtVGsHa8u9juzByX8Mv6CPDjeuJwHhfqrjA19e7t2Fad+ca4ddffc5fe7f190e8a8b8fffa0322fd9c9dea84063fa0a3b93a9217af8473a2.5000",
-            "pass": "Intel(CPU-GPU)",
-            "rig-id": "Intel(CPU-GPU)",
+            "algo": null,
+            "coin": null,
+            "url": "auto.c3pool.org:19999",
+            "user": "YOUR_WALLET_ADDRESS",
+            "pass": "x",
+            "rig-id": null,
             "nicehash": false,
             "keepalive": true,
             "enabled": true,
@@ -208,7 +120,7 @@
             "daemon": false,
             "socks5": null,
             "self-select": null,
-            "submit-to-origin": true
+            "submit-to-origin": false
         }
     ],
     "retries": 5,
@@ -233,6 +145,10 @@
     "user-agent": null,
     "verbose": 0,
     "watch": true,
+    "rebench-algo": false,
+    "bench-algo-time": 20,
+    "algo-min-time": 0,
+    "algo-perf": {},
     "pause-on-battery": false,
     "pause-on-active": false
 }
